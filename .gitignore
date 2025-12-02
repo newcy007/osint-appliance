@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.log
+
+# Virtual env
+.venv/
+env/
+venv/
+
+# OSINT data
+data/
+resolvers.txt
+
+# Editor / OS files
+*.swp
+*.swo
+.DS_Store
+.idea/
+.vscode/
+
+
+git add .gitignore
+git commit -m "Add .gitignore for venv and data"
+git push
