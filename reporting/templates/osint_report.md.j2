@@ -1,0 +1,205 @@
+# OSINT Reconnaissance Report – {{ target.name }}
+
+**Engagement ID:** {{ target.engagement_id }}  
+**Primary domains:** {{ target.domains | join(", ") }}
+
+---
+
+## 1. Executive Summary
+
+This OSINT assessment focused on identifying publicly visible assets, exposed services, and externally observable risks relating to **{{ target.name }}**.  
+The analysis combined passive and active reconnaissance using industry-standard tooling (Amass, Subfinder, Naabu, Httpx, Nuclei) in line with BlackBox Pentesters’ methodology.
+
+### Key Findings Summary
+
+- **Identified hostnames:** {{ stats.subdomain_count }}
+- **Identified IPv4 addresses:** {{ stats.ip_count }}
+- **Externally reachable services:** {{ stats.hosts_with_open_ports }}
+- **HTTP(S) services discovered:** {{ stats.http_services_count }}
+- **Template-based vulnerabilities (Nuclei):** {{ stats.nuclei_findings_count }}
+- **Credential exposure hits:** {{ stats.breach_records }}
+- **GitHub code references:** {{ stats.github_matches }}
+- **Shodan-exposed hosts:** {{ stats.shodan_hosts }}
+
+At the time of testing, **no exposed services or high-risk vulnerabilities** were identified.  
+This significantly reduces the externally accessible attack surface.  
+However, organisations with a minimal perimeter remain susceptible to:
+
+- credential-based attacks  
+- supply-chain compromise  
+- phishing and social engineering  
+- accidental infrastructure exposure following future DNS or hosting changes  
+
+---
+
+## 2. OSINT-Driven Observations
+
+Automated reconnaissance did **not** identify:
+
+- public remote-access services (SSH, RDP, VPN)  
+- externally reachable administrative interfaces  
+- misconfigured cloud buckets  
+- vulnerable web services accessible from the internet  
+
+This result is positive and indicates that **{{ target.name }}’s external exposure is currently low**.
+
+### Recommendations
+
+1. **Continue perimeter monitoring** to detect new hosts, DNS changes, or unexpected exposures.
+2. **Review credential hygiene**, as password reuse and historical breaches remain a leading attack vector.
+3. **Conduct regular phishing and social-engineering assessments**, as human factors remain exploitable even with a minimal technical footprint.
+4. **Re-run OSINT quarterly** or after major infrastructure updates.
+
+---
+
+## 3. External Attack Surface – Asset Inventory
+
+A detailed breakdown of all identified externally visible assets is provided below.
+
+---
+
+### 3.1 Subdomain Inventory
+
+Total Acme-owned hostnames identified: **{{ stats.subdomain_count }}**
+
+These hostnames represent the external footprint of {{ target.domains | join(", ") }} during the assessment.
+
+| # | Hostname |
+|---|----------|
+{% for h in subdomains %}
+| {{ loop.index }} | {{ h }} |
+{% endfor %}
+
+---
+
+### 3.2 Open Ports (Naabu)
+
+Externally reachable hosts with open ports: **{{ stats.hosts_with_open_ports }}**
+
+{% if open_ports %}
+| # | IP | Port | Protocol | Notes |
+|---|----|------|----------|-------|
+{% for p in open_ports %}
+| {{ loop.index }} | {{ p.ip }} | {{ p.port }} | {{ p.protocol }} | {{ p.note or "" }} |
+{% endfor %}
+{% else %}
+_No open ports identified by automated scanning._
+{% endif %}
+
+---
+
+### 3.3 HTTP(S) Services (Httpx)
+
+HTTP(S) services identified: **{{ stats.http_services_count }}**
+
+{% if http_services %}
+| # | URL | Status | Title | Technologies |
+|---|-----|--------|--------|--------------|
+{% for s in http_services %}
+| {{ loop.index }} | {{ s.url }} | {{ s.status }} | {{ s.title or "" }} | {{ s.tech or "" }} |
+{% endfor %}
+{% else %}
+_No HTTP services identified._
+{% endif %}
+
+---
+
+## 4. Nuclei Findings (Template-Based Checks)
+
+Total detections: **{{ stats.nuclei_findings_count }}**
+
+{% if nuclei_findings %}
+| # | Severity | Template | Host | Description |
+|---|----------|----------|------|-------------|
+{% for n in nuclei_findings %}
+| {{ loop.index }} | {{ n.severity }} | {{ n.template_id }} | {{ n.host }} | {{ n.info }} |
+{% endfor %}
+{% else %}
+_No issues detected by Nuclei._
+{% endif %}
+
+---
+
+## 5. Credential Exposure (Public Breach Intelligence)
+
+Total breach matches: **{{ stats.breach_records }}**
+
+{% if breaches %}
+| # | Email | Breaches | Details |
+|---|--------|----------|----------|
+{% for b in breaches %}
+| {{ loop.index }} | {{ b.email }} | {{ b.count }} | {{ b.details }} |
+{% endfor %}
+{% else %}
+_No credential exposure identified or breach API disabled._
+{% endif %}
+
+---
+
+## 6. Public Code & Infrastructure Intelligence
+
+### 6.1 GitHub Search
+
+Matches identified: **{{ stats.github_matches }}**
+
+{% if github %}
+| # | Repository | File | Match |
+|---|-----------|------|--------|
+{% for g in github %}
+| {{ loop.index }} | {{ g.repo }} | {{ g.file }} | {{ g.match }} |
+{% endfor %}
+{% else %}
+_No GitHub references identified._
+{% endif %}
+
+---
+
+### 6.2 IP / ASN Intelligence
+
+IP enrichment results: **{{ ipintel | length }}**
+
+{% if ipintel %}
+| # | IP | ASN | Org | Reverse DNS |
+|---|----|-----|-----|--------------|
+{% for i in ipintel %}
+| {{ loop.index }} | {{ i.ip }} | {{ i.asn }} | {{ i.org }} | {{ i.reverse }} |
+{% endfor %}
+{% else %}
+_No IP intelligence available._
+{% endif %}
+
+---
+
+### 6.3 Shodan Exposure
+
+Exposed hosts detected: **{{ stats.shodan_hosts }}**
+
+{% if shodan %}
+| # | IP | Ports | Organisation | Tags | Vulnerabilities |
+|---|----|--------|--------------|-------|----------------|
+{% for s in shodan %}
+| {{ loop.index }} | {{ s.ip }} | {{ s.ports }} | {{ s.org }} | {{ s.tags }} | {{ s.vuln_ids }} |
+{% endfor %}
+{% else %}
+_No Shodan-indexed exposure detected._
+{% endif %}
+
+---
+
+## 7. Analyst Notes & Next Steps
+
+- This report forms the OSINT / reconnaissance section of a full penetration test.  
+- Findings here should be used to validate scope and guide deeper testing.  
+- As Acme’s infrastructure evolves (new cloud services, SaaS adoption, DNS changes), new exposures may appear that were not observable during this engagement.
+
+For ongoing monitoring or deeper analysis, BlackBox Pentesters can integrate:
+
+- Continuous DNS and attack-surface monitoring  
+- Dark web credential monitoring  
+- Code repository monitoring  
+- Scheduled Shodan/Censys exposure checks  
+
+---
+
+*Generated automatically using the BlackBox OSINT Automation Framework.*  
+*Report timestamp: {{ target.timestamp }}*

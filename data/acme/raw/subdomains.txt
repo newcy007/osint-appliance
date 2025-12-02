@@ -1,0 +1,71 @@
+14618 (ASN) --> announces --> 54.242.0.0/15 (Netblock)
+14618 (ASN) --> managed_by --> AMAZON-AES - Amazon.com, Inc. (RIROrganization)
+15348 (ASN) --> announces --> 216.40.32.0/20 (Netblock)
+15348 (ASN) --> announces --> 2604:4000::/48 (Netblock)
+15348 (ASN) --> managed_by --> TUCOWS - Tucows.com Co. (RIROrganization)
+216.40.32.0/20 (Netblock) --> contains --> 216.40.47.26 (IPAddress)
+23.93.0.0/16 (Netblock) --> contains --> 23.93.87.41 (IPAddress)
+24940 (ASN) --> announces --> 65.21.0.0/16 (Netblock)
+24940 (ASN) --> managed_by --> HETZNER-AS (RIROrganization)
+2604:4000:2000::/36 (Netblock) --> contains --> 2604:4000:2800:d:64:99:148:13 (IPAddress)
+2604:4000::/48 (Netblock) --> contains --> 2604:4000:0:d:216:40:47:26 (IPAddress)
+32133 (ASN) --> announces --> 2604:4000:2000::/36 (Netblock)
+32133 (ASN) --> managed_by --> AS32133 (RIROrganization)
+32491 (ASN) --> announces --> 64.98.144.0/20 (Netblock)
+32491 (ASN) --> managed_by --> TUCOWS-3 - Tucows.com Co. (RIROrganization)
+46375 (ASN) --> announces --> 23.93.0.0/16 (Netblock)
+46375 (ASN) --> managed_by --> AS-SONICTELECOM - Sonic Telecom LLC (RIROrganization)
+54.242.0.0/15 (Netblock) --> contains --> 54.243.193.135 (IPAddress)
+64.98.144.0/20 (Netblock) --> contains --> 64.98.148.13 (IPAddress)
+65.21.0.0/16 (Netblock) --> contains --> 65.21.216.60 (IPAddress)
+acme.com (FQDN) --> a_record --> 23.93.87.41 (IPAddress)
+acme.com (FQDN) --> node --> gate.acme.com (FQDN)
+acme.com (FQDN) --> node --> mail.acme.com (FQDN)
+acme.com (FQDN) --> node --> mapper.acme.com (FQDN)
+acme.com (FQDN) --> node --> root.acme.com (FQDN)
+acme.com (FQDN) --> node --> rr.acme.com (FQDN)
+acme.com (FQDN) --> node --> www.acme.com (FQDN)
+acme.com (FQDN) --> ns_record --> ns1.hover.com (FQDN)
+acme.com (FQDN) --> ns_record --> ns2.hover.com (FQDN)
+auth.acme.com
+chumaker.acme.com
+gate.acme.com
+gate.acme.com (FQDN) --> cname_record --> acme.com (FQDN)
+groupr.acme.com
+heartmaker.acme.com
+itemize.net (FQDN) --> a_record --> 54.243.193.135 (IPAddress)
+labelmaker.acme.com
+licensemaker.acme.com
+mail.acme.com
+mail.acme.com (FQDN) --> a_record --> 23.93.87.41 (IPAddress)
+mail.patton.acme.com
+mail.rr.acme.com
+mapper.acme.com
+mapper.acme.com (FQDN) --> cname_record --> acme.com (FQDN)
+ns1.hover.com (FQDN) --> a_record --> 216.40.47.26 (IPAddress)
+ns1.hover.com (FQDN) --> aaaa_record --> 2604:4000:0:d:216:40:47:26 (IPAddress)
+ns2.hover.com (FQDN) --> a_record --> 64.98.148.13 (IPAddress)
+ns2.hover.com (FQDN) --> aaaa_record --> 2604:4000:2800:d:64:99:148:13 (IPAddress)
+online.acme.com
+patton.acme.com
+photo.acme.com
+pix.acme.com
+root.acme.com
+root.acme.com (FQDN) --> a_record --> 65.21.216.60 (IPAddress)
+rr.acme.com
+rr.acme.com (FQDN) --> cname_record --> itemize.net (FQDN)
+www.acme.com
+www.acme.com (FQDN) --> cname_record --> acme.com (FQDN)
+www.auth.acme.com
+www.chumaker.acme.com
+www.groupr.acme.com
+www.heartmaker.acme.com
+www.labelmaker.acme.com
+www.licensemaker.acme.com
+www.mail.acme.com
+www.mapper.acme.com
+www.online.acme.com
+www.patton.acme.com
+www.photo.acme.com
+www.pix.acme.com
+www.rr.acme.com

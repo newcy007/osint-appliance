@@ -1,0 +1,44 @@
+# Core system + YAML config
+pyyaml
+python-dotenv
+
+# Subdomain / OSINT tooling helpers
+requests
+dnspython
+
+# Markdown to HTML rendering
+markdown
+
+# DOCX generation
+python-docx
+
+# Jinja2 templates (used for MD reports and DOCX templating)
+jinja2
+
+# PDF generation (MD → HTML → PDF)
+weasyprint
+html5lib
+cssselect
+tinycss2
+cairosvg
+
+# Shodan API
+shodan
+
+# GitHub public code search
+PyGithub
+
+# IPinfo IO enrichment
+ipinfo
+
+# Data formatting helpers
+pandas
+
+# URL / HTML parsing
+beautifulsoup4
+
+# CLI utilities
+rich
+
+# Optional – security scanning support libraries
+aiofiles

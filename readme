@@ -1,0 +1,14 @@
+cd /root/osint-appliance
+source .venv/bin/activate
+
+# 1) Run full recon pipeline
+python main.py --target acme
+
+# 2) Generate Markdown report
+python reporting/generate_report.py --target acme
+
+# 3) Generate DOCX
+python reporting/generate_docx.py --target acme
+
+# 4) Generate PDF
+python reporting/generate_pdf.py --target acme

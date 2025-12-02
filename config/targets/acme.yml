@@ -1,0 +1,16 @@
+name: "Acme Corp"
+engagement_id: "BBP-OSINT-2025-001"
+
+domains:
+  - "acme.com"
+
+scope_notes: |
+  OSINT-only. DNS / HTTP probing / port scanning permitted.
+  No exploitation.
+
+exclusions: []
+
+options:
+  run_naabu: true
+  run_httpx: true
+  run_nuclei: true

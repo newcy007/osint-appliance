@@ -1,0 +1,35 @@
+default_output_dir: "data"
+
+tool_paths:
+  amass: "amass"
+  subfinder: "subfinder"
+  httpx: "httpx"
+  naabu: "naabu"
+  nuclei: "nuclei"
+
+limits:
+  max_subdomains: 5000
+  max_hosts_for_httpx: 2000
+  max_hosts_for_naabu: 2000
+
+apis:
+  hibp:
+    enabled: true
+    key_env: "HIBP_KEY"
+
+  github:
+    enabled: true
+    token_env: "GITHUB_PAT"
+
+  ipinfo:
+    enabled: true
+    token_env: "IPINFO_TOKEN"
+
+  shodan:
+    enabled: true
+    key_env: "SHODAN_API_KEY"
+
+options:
+  run_breaches: true
+  run_github: true
+  run_ipintel: true
